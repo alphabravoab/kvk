@@ -1,15 +1,24 @@
 article {
     background-color: var(--focus-blue);
     border-radius: calc(var(--base-padding) /2 );
+
+
+}
+
+.main-info-container {
     display: flex;
     align-items: center;
+    gap: var(--base-padding);
 }
+
 .company-logo-container {
     width: 90px;
 }
+
 .company-logo-container > img {
     width: calc(90px - var(--base-padding));
     margin: calc(var(--base-padding) / 2);
+    margin-left: var(--base-padding);
 }
 
 .company-name {
@@ -17,8 +26,33 @@ article {
     font-weight: 600;
     flex-grow: 1;
 }
+
 .company-location {
     font-size: 14px;
     text-align: right;
     margin-right: calc(var(--base-padding) / 2);
+}
+
+.details-button {
+    background-color: var(--dark-color);
+    color: white;
+    border-radius: 6px;
+    margin: 0 var(--base-padding);
+    width: 120px;
+}
+
+.details-container {
+    margin: var(--base-padding) var(--base-padding);
+    margin-top: 0;
+}
+
+.catch-phrase {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: calc(var(--base-padding) * 2);
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
 }

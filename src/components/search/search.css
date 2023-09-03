@@ -26,6 +26,9 @@ input:focus {
 
 button {
     border: 0;
+}
+
+.search-button {
     background-color: var(--text-color);
     padding: 9px;
     border-radius: 0 calc(var(--base-padding) / 2) calc(var(--base-padding) / 2) 0;

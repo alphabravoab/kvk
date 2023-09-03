@@ -34,8 +34,11 @@ function CompanyLine({company}: RenderProps) {
                 {show && companyDetails && (
                 <div className="details-container">
                     <div className="catch-phrase">Catch phrase: {companyDetails.catchPhrase}</div>
-                    <div>Phone: {companyDetails.phoneNumber}</div>
-                    <div>Website: {companyDetails.website}</div>
+                    <div className="contact-container">
+                        <div>Phone: {companyDetails.phoneNumber}</div>
+                        <div className="vertical-divider" />
+                        <div>Website: {companyDetails.website}</div>
+                    </div>
                 </div>
                     )}
             </article>

@@ -1,0 +1,13 @@
+.pagination-container {
+    margin-top: 20px;
+    display: flex;;
+}
+.page-button {
+    outline: 0;
+}
+.current {
+    font-weight: 800;
+}
+.spacer {
+    width: 30px; 
+}

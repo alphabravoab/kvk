@@ -7,6 +7,7 @@ import { http_get } from "../../util/httpClients";
 import CompaniesList from "../companies/CompaniesList";
 import Modal from "../modal/Modal";
 import search from "../svg/searchIcon.svg";
+import Pagination from "./Pagination"
 import "./search.css"
 
 type FormValue = {
@@ -15,23 +16,36 @@ type FormValue = {
 }
 
 type Params = {
+    page: number,
+    limit: number
     search?: string,
     city?: string,
 }
 
 function Search() {
     const [companyList, changeCompanyList] = useState<Array<Company>>([]);
-    const [error, setError] = useState<string>("")
-    const { register, handleSubmit } = useForm<FormValue>();
+    const [page, setPage] = useState(1);
+    const [totalCompanies, changeTotalCompanies] = useState(0);
+    const [error, setError] = useState<string>("");
+    const { register, handleSubmit, getValues } = useForm<FormValue>();
+    const limit = 5;
     useEffect(() => {
-        http_get<Response<Company[]>>("").then(x => {
-            changeCompanyList(x.data.data)
+        http_get<Response<Company[]>>(`?page=${page}&limit=${limit}`).then(x => {
+            changeCompanyList(x.data.data);
+            changeTotalCompanies(x.data.total);
         });
-    }, [])
+    }, []);
+    useEffect(() => {
+        const params = getValues;
+        http_get<Response<Company[]>>(`?page=${page}&limit=${limit}&${params}`).then(x => {
+            changeCompanyList(x.data.data);
+        
+        });
+    }, [page])
     const onSubmit: SubmitHandler<FormValue> = (values) => {
-        const params: Params = {}
-        if (values.name) {
-            params.search = values.name;
+        const params: Params = {
+            search: values.name,
+            page, limit, 
         }
         if (values.city) {
             params.city = values.city;
@@ -39,23 +53,25 @@ function Search() {
         const queryParam = queryString.stringify(params)
 
         http_get<Response<Company[]>>(`?${queryParam}`).then(x => {
-            changeCompanyList(x.data.data)
+            changeCompanyList(x.data.data);
+            changeTotalCompanies(x.data.total);
         }).catch(e => {
-            setError(e.request.responseText);
-                console.log("t", e.request)
-            
+            setError(e.request.responseText); 
         });
     }
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)} className="form-container">
-                <input className="name-input" {...register("name")} placeholder="Company name" />
+                <input className="name-input" {...register("name")} placeholder="Company name" aria-label="Name of the company" />
                 <div className="divider" />
                 <input {...register("city")} placeholder="Company city" />
-                <button type="submit"><div className="mobile-only search">Search</div><img src={search} alt="search" className="search-icon" /></button>
+                <button type="submit" className="search-button">
+                    <div className="mobile-only search">Search</div><img src={search} alt="search" className="search-icon" aria-label="City of the company" />
+                </button>
             </form>
             <Modal open={error !== ""} requestClose={() => setError("")}><div>{error}</div></Modal>
             <CompaniesList companyList={companyList} />
+            <Pagination currentPage={page} setPage={setPage} totalPages={totalCompanies / limit} />
         </>
     )
 }

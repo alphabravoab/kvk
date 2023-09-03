@@ -1,8 +1,6 @@
 article {
     background-color: var(--focus-blue);
     border-radius: calc(var(--base-padding) /2 );
-
-
 }
 
 .main-info-container {
@@ -55,4 +53,20 @@ article {
 .contact-container {
     display: flex;
     justify-content: space-between;
+}
+
+@media only screen and (max-width: 991px){
+    article {
+        padding: var(--base-padding);
+    }
+    .company-logo-container {
+        display: none;
+    }
+    .company-name {
+        max-width: 30%;
+        overflow: hidden;
+    }
+    .details-container {
+        margin-top: var(--base-padding);
+    }
 }

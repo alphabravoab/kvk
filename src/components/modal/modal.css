@@ -1,0 +1,25 @@
+dialog {
+    position: absolute;
+    top: 50%;
+    border: 4px solid red;
+    padding: 20px;
+    padding-right: 30px;
+}
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(112, 112, 112, 0.7);
+}
+.hide {
+    display: none;
+}
+.close-button  {
+    position: absolute;
+    top: -8px;
+    background: 0;
+    right: -4px;
+    font-size: large;
+}

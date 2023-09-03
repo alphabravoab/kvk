@@ -29,6 +29,7 @@ button {
     background-color: var(--text-color);
     padding: 9px;
     border-radius: 0 calc(var(--base-padding) / 2) calc(var(--base-padding) / 2) 0;
+    color: white;
 }
 
 button:focus {
@@ -39,4 +40,28 @@ button:focus {
     height: var(--base-padding);
     color: white;
     margin-right: 4px;
+}
+.mobile-only {
+    display: none;
+}
+
+@media only screen and (max-width: 991px){
+    .form-container {
+        margin: calc(var(--base-padding) * 1.5);
+        flex-direction: column;
+        gap: calc(var(--base-padding) / 2);
+        width: 90%;
+    }
+    button {
+        border-radius: 0;
+    }
+    .name-input {
+        border-radius: 0;
+    }
+    .mobile-only {
+        display: inline;
+    }
+    .search {
+        margin-right: var(--base-padding);
+    }
 }

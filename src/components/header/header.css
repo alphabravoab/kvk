@@ -16,3 +16,9 @@ header {
 .logo-container {
     padding: var(--base-padding);
 }
+
+.logo {
+    height: calc(var(--base-padding) * 3);
+    border-radius: 100%;
+    margin-top: 2px;
+}

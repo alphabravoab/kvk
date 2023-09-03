@@ -8,9 +8,16 @@ type RenderProps = {
 }
 
 function CompaniesList({companyList}: RenderProps) {
+    if (Boolean(companyList.length === 0)) {
+        return(
+            <section>
+                <div className="no-results">No results found</div>
+            </section>
+        )
+    }
     return (
         <section>
-            {companyList.map(comp => <CompanyLine company={comp} />)}
+            {companyList.map(comp => <CompanyLine key={comp.id} company={comp} />)}
         </section>
     )
 }

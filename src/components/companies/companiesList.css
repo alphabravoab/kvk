@@ -9,6 +9,17 @@ section {
     padding:calc(var(--base-padding) / 2);
 }
 
+.no-results {
+    height: 80px;
+    background-color: var(--focus-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: calc(var(--base-padding) / 2);
+}
+
 @media only screen and (max-width: 991px){
     section {
         width: 90%

@@ -14,6 +14,10 @@ type FormValue = {
     city: string,
 }
 
+type Params = {
+    search?: string,
+    city?: string,
+}
 
 function Search() {
     const [companyList, changeCompanyList] = useState<Array<Company>>([]);
@@ -25,9 +29,12 @@ function Search() {
         });
     }, [])
     const onSubmit: SubmitHandler<FormValue> = (values) => {
-        const params = {
-            search: values.name,
-            city: values.city
+        const params: Params = {}
+        if (values.name) {
+            params.search = values.name;
+        }
+        if (values.city) {
+            params.city = values.city;
         }
         const queryParam = queryString.stringify(params)
 
@@ -41,15 +48,14 @@ function Search() {
     }
     return (
         <>
-        <form onSubmit={handleSubmit(onSubmit)} className="form-container">
-            <input className="name-input" {...register("name")} placeholder="Company name" />
-            <div className="divider" />
-            <input {...register("city")} placeholder="Company city" />
-            <button type="submit"><div className="mobile-only search">Search</div><img src={search} alt="search" className="search-icon" /></button>
-        </form>
-        <Modal open={error !== ""} requestClose={() => setError("")}><div>{error}</div></Modal>
-        <CompaniesList companyList={companyList} />
-
+            <form onSubmit={handleSubmit(onSubmit)} className="form-container">
+                <input className="name-input" {...register("name")} placeholder="Company name" />
+                <div className="divider" />
+                <input {...register("city")} placeholder="Company city" />
+                <button type="submit"><div className="mobile-only search">Search</div><img src={search} alt="search" className="search-icon" /></button>
+            </form>
+            <Modal open={error !== ""} requestClose={() => setError("")}><div>{error}</div></Modal>
+            <CompaniesList companyList={companyList} />
         </>
     )
 }

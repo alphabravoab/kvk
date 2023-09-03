@@ -1,0 +1,24 @@
+article {
+    background-color: var(--focus-blue);
+    border-radius: calc(var(--base-padding) /2 );
+    display: flex;
+    align-items: center;
+}
+.company-logo-container {
+    width: 90px;
+}
+.company-logo-container > img {
+    width: calc(90px - var(--base-padding));
+    margin: calc(var(--base-padding) / 2);
+}
+
+.company-name {
+    font-size: 16px;
+    font-weight: 600;
+    flex-grow: 1;
+}
+.company-location {
+    font-size: 14px;
+    text-align: right;
+    margin-right: calc(var(--base-padding) / 2);
+}

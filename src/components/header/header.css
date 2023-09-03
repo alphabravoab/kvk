@@ -1,0 +1,18 @@
+header {
+    height: calc(var(--base-padding) * 4);
+    background-color: var(--dark-color);
+    display: flex;
+    align-items: center;
+    width: 100vw;
+}
+
+.title {
+    font-size: 32px;
+    width: 100%;
+    max-width: 1096px;
+    color: var(--off-white);
+}
+
+.logo-container {
+    padding: var(--base-padding);
+}

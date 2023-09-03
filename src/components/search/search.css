@@ -1,0 +1,34 @@
+.formContainer {
+    margin: calc(var(--base-padding) * 1.5) 0;
+    width: 100%;
+    max-width: 1096px;
+    display: flex;
+}
+input {
+    padding: calc(var(--base-padding) / 1.5);
+    border: 0;
+    flex-grow: 1;
+}
+input:focus {
+    outline: 2px solid var( --dark-color);
+}
+.nameInput {
+    border-radius: calc(var(--base-padding) / 2) 0 0 calc(var(--base-padding) / 2);
+}
+.divider {
+    height: 100%;
+    border-left: 2px solid var(--text-color);
+}
+button {
+    border: 0;
+    background-color: var(--text-color);
+    padding: 9px;
+    border-radius: 0 calc(var(--base-padding) / 2) calc(var(--base-padding) / 2) 0;
+}
+button:focus {
+    outline: 2px solid var(--dark-color);
+}
+.searchIcon {
+    height: var(--base-padding);
+    color: white;
+}

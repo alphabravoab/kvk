@@ -1,0 +1,10 @@
+section {
+    width: 100%;
+    max-width: 1096px;
+    background-color: var(--dark-color);
+    border-radius: calc(var(--base-padding) / 2);
+    gap:calc(var(--base-padding) / 2);
+    display: flex;
+    flex-direction: column;
+    padding:calc(var(--base-padding) / 2);
+}
